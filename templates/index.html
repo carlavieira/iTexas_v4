@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+    {% block body_block %}
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Seja bem vindo ao iTexas !</h1>
+                {% if user.is_authenticated %}
+                    <h2>Olá {{ user.first_name }}</h2>
+                {% else %}
+                    <h2>Register or Login if you'd like to</h2>
+                {% endif %}
+            </div>
+        </div>
+    {% endblock %}
+{% else %}
+    <h2>Logar</h2>
+{% endif %}

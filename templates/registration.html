@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block body_block %}
+    <div class="container">
+
+        {% if registered %}
+            <h1>Registrado com Sucesso</h1>
+        {% else %}
+            <div class="registration-area ogr-container">
+                <h1 class="title">Registrar Novo Membro</h1>
+                <div class="form-group">
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %}
+                        {{ user_form.as_p }}
+                        <p class="par-center">
+                            <input class="register-button" type="submit" value="Registrar">
+                        </p>
+
+                    </form>
+                </div>
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}

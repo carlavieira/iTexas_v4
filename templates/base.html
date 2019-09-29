@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker&display=swap" rel="stylesheet">
+</head>
+<body>
+{% if user.is_authenticated %}
+    <div class="top-bar">
+        <h2>iTexas</h2>
+        <button class="btn-menu"><i class="fa fa-bars fa-lg"></i></button>
+    </div>
+    <div class="ogr-container">
+    <nav class="menu-mobile">
+        <div class="container-close">
+            <a class="btn-close">x</a>
+        </div>
+        <div class="menu-contents">
+            <div class="profile-picture"></div>
+            <div class="member-infos">
+                <h2 class="member-name">{{ user.first_name }} {{ user.last_name }}</h2>
+                <h3 class="member-area">{{ user.post }} de {{ user.department }}</h3>
+            </div>
+
+            <ul class="function-list">
+                <li><a href="" class="button">Lista de Membros</a></li>
+                <li><a href="" class="button">Editar Perfil</a></li>
+                <li><a href="" class="button">Marcar Presença</a></li>
+                <li><a href="">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-body">
+
+    <div class="lateral-menu">
+        <div class="logo-area">
+            <h2 class="logo-mobile">iTexas</h2>
+        </div>
+        <div class="menu-area">
+            <div class="profile-picture"></div>
+            <div class="member-infos">
+                <h2 class="member-name">{{ user.first_name }} {{ user.last_name }}</h2>
+                <h3 class="member-area">{{ user.post }} de {{ user.department }}</h3>
+            </div>
+            <ul class="function-list">
+                <li><a href="" class="button">Lista de Membros</a></li>
+                <li><a href="" class="button">Editar Perfil</a></li>
+                <li><a href="{% url 'register' %}" class="button">Cadastrar Membro</a></li>
+                <li><a href="" class="button">Marcar Presença</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="navbar-link" href="{% url 'user_login' %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="body-content">
+        {% block body_block %}
+        {% endblock %}
+    </div>
+{% else %}
+    <div class="container">
+        <div class="login-panel">
+            <h2 class="title"> Seja bem vindo ao</h2>
+            <h2 class="name-app">iTexas!</h2>
+
+            <div class="user-info">
+                <form method="post" action="{% url 'user_login' %}">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="podio_code">ID:</label>
+                        <input class="input-podio_code form-control" type="text" name="podio_code" placeholder="podio_code">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input class="input-pass form-control" type="password" name="password" placeholder="Password">
+                    </div>
+                    <div class="button-session">
+                        <input type="submit" class="login-button" name="login-button" value="Login">
+                        <a href="#" class="forgot-pass">Esqueci minha senha</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endif %}
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.js"
+        integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI=" crossorigin="anonymous"></script>
+<script>
+    $(".btn-menu").click(function () {
+        $(".menu-mobile").show();
+    })
+    $(".btn-close").click(function () {
+        $(".menu-mobile").hide();
+    })
+</script>
+</body>
+</html>
