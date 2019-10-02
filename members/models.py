@@ -76,4 +76,3 @@ class MyUser(AbstractBaseUser):
         return self.is_admin
 from django.db import models
 
-# Create your models here.

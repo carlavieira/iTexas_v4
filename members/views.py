@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import ListView
+
 from members.forms import UserForm
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -6,8 +8,10 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-
 # Create your views here.
+from members.models import MyUser
+
+
 def index(request):
     return render(request, 'index.html')
 
@@ -63,14 +67,35 @@ def user_login(request):
         return render(request, 'user_login.html', {})
 
 
-# def view_profile(request):
-#     if request.method == 'GET':
-#         user = request.user
-#         serializer = UserDataSerializer(user)
-#         return JsonResponse(serializer.data, safe=False)
-from django.shortcuts import render
+def member_list(request, template_name='members/member_list.html'):
+    user = MyUser.objects.all()
+    data = {}
+    data['object_list'] = user
+    return render(request, template_name, data)
 
-# Create your views here.
-from django.shortcuts import render
 
-# Create your views here.
+def member_view(request, pk, template_name='members/member_detail.html'):
+    user = get_object_or_404(MyUser, pk=pk)
+    return render(request, template_name, {'object': user})
+
+
+def member_update(request, pk, template_name='members/member_form.html'):
+    user = get_object_or_404(MyUser, pk=pk)
+    form = UserForm(request.POST or None, instance=user)
+    if form.is_valid():
+        form.save()
+        return redirect('member_list')
+    return render(request, template_name, {'form': form})
+
+
+def member_delete(request, pk, template_name='members/member_confirm_delete.html'):
+    user = get_object_or_404(MyUser, pk=pk)
+    if request.method == 'POST':
+        user.delete()
+        return redirect('member_list')
+    return render(request, template_name, {'object': user})
+
+
+def member_view(request, pk, template_name='members/member_detail.html'):
+    user = get_object_or_404(MyUser, pk=pk)
+    return render(request, template_name, {'object': user})
