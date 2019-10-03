@@ -46,15 +46,15 @@ class MyUser(AbstractBaseUser):
     DEPARTMENT = (
     ('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'),
     ('9', 'IGE'), ('10', 'IGT'),)
-    email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
+    email = models.EmailField(verbose_name='E-mail', max_length=255, unique=True)
     podio_code = models.CharField(max_length=10, verbose_name='ID do Podio', unique=True)
     first_name = models.CharField(max_length=20, verbose_name='Nome')
     last_name = models.CharField(max_length=20, verbose_name='Sobrenome')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    post = models.CharField(max_length=2, choices=POST, blank=True, null=True, )
-    department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True)
-    leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL)
+    post = models.CharField(max_length=2, choices=POST, blank=True, null=True, verbose_name='Cargo')
+    department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True, verbose_name='Área')
+    leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Líder')
 
     objects = MyUserManager()
 
@@ -79,6 +79,3 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-
-    def get_absolute_url(self):
-        return reverse('member_edit', kwargs={'pk': self.pk})

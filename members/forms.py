@@ -17,3 +17,9 @@ class UserForm(forms.ModelForm):
         model = MyUser
         fields = ('podio_code', 'password', 'email', 'first_name', 'last_name', 'department', 'post', 'leader')
 
+
+class UserFormEdit(forms.ModelForm):
+
+    class Meta:
+        model = MyUser
+        fields = ('podio_code', 'email', 'first_name', 'last_name', 'department', 'post', 'leader')
