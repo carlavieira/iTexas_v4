@@ -17,4 +17,3 @@ class UserForm(forms.ModelForm):
         model = MyUser
         fields = ('podio_code', 'password', 'email', 'first_name', 'last_name', 'department', 'post', 'leader')
 
-

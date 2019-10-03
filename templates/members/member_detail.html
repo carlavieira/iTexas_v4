@@ -1,15 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-    <p>Detalhe do membro</p>
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+    {% block body_block %}
+    <h2>Detalhe do membro</h2>
                 <li> {{ user.first_name  }} {{ user.last_name }}</li>
                 <li> ID: {{ user.podio_code }}</li>
                 <li> Área: {{ user.get_department_display }}</li>
@@ -18,6 +10,7 @@
     </ul>
         <a href="{% url 'member_delete' user.podio_code %}">Deletar</a>
         <a href="{% url 'member_edit' user.podio_code %}">Editar</a>
-
-</body>
-</html>
+    {% endblock %}
+{% else %}
+    <h2>Logar</h2>
+{% endif %}

@@ -32,7 +32,7 @@
             </div>
 
             <ul class="function-list">
-                <li><a href="" class="button">Lista de Membros</a></li>
+                <li><a href="{% url 'member_list' %}" class="button">Lista de Membros</a></li>
                 <li><a href="" class="button">Editar Perfil</a></li>
                 <li><a href="" class="button">Marcar Presença</a></li>
                 <li><a href="">Logout</a></li>
@@ -53,7 +53,7 @@
                 <h3 class="member-area">{{ user.get_post_display }} de {{ user.get_department_display }}</h3>
             </div>
             <ul class="function-list">
-                <li><a href="" class="button">Lista de Membros</a></li>
+                <li><a href="{% url 'member_list' %}" class="button">Lista de Membros</a></li>
                 <li><a href="" class="button">Editar Perfil</a></li>
                 <li><a href="{% url 'register' %}" class="button">Cadastrar Membro</a></li>
                 <li><a href="" class="button">Marcar Presença</a></li>
@@ -66,8 +66,10 @@
         </div>
     </div>
     <div class="body-content">
-        {% block body_block %}
-        {% endblock %}
+        <div class="body-container">
+            {% block body_block %}
+            {% endblock %}
+        </div>
     </div>
 {% else %}
     <div class="ogr-container">

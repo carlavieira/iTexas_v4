@@ -1,21 +1,36 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <ul>
-    <p>Lista de Membros</p>
-        {% for user in users %}
-            <a href="{% url 'member_view' user.podio_code %}">
-                <li> {{ user.first_name  }} {{ user.last_name }}</li>
-            </a>
-        {% endfor %}
-    </ul>
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+    {% block body_block %}
 
-</body>
-</html>
+        <h2 class="title">Lista de Membros</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th class="table-column">Nome</th>
+                <th class="table-column">ID</th>
+                <th class="table-column">Cargo</th>
+                <th class="table-column">Departamento</th>
+                <th class="table-column">Lider</th>
+                <th class="table-column"></th>
+            </tr>
+            </thead>
+                <tbody>
+            {% for user in users %}
+
+                <tr>
+                        <td>{{ user.first_name }} {{ user.last_name }}</td>
+                        <td>{{ user.podio_code }}</td>
+                        <td>{{ user.post }} </td>
+                        <td>{{ user.departament }}</td>
+                        <td>{{ user.leader }}</td>
+                        <td><a href="{% url 'member_view' user.podio_code %}">Editar</a></td>
+                </tr>
+
+            {% endfor %}
+                </tbody>
+                </table>
+
+    {% endblock %}
+{% else %}
+    <h2>Logar</h2>
+{% endif %}
