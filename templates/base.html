@@ -50,7 +50,7 @@
             <div class="profile-picture"></div>
             <div class="member-infos">
                 <h2 class="member-name">{{ user.first_name }} {{ user.last_name }}</h2>
-                <h3 class="member-area">{{ user.post }} de {{ user.department }}</h3>
+                <h3 class="member-area">{{ user.get_post_display }} de {{ user.get_department_display }}</h3>
             </div>
             <ul class="function-list">
                 <li><a href="" class="button">Lista de Membros</a></li>

@@ -1,7 +1,10 @@
+from audioop import reverse
+
 from django.db import models
 from django.contrib.auth.models import (
     BaseUserManager, AbstractBaseUser
 )
+
 
 class MyUserManager(BaseUserManager):
     def create_user(self, podio_code, email, first_name, password=None):
@@ -40,14 +43,16 @@ class MyUserManager(BaseUserManager):
 
 class MyUser(AbstractBaseUser):
     POST = (('1,', 'LCP'), ('2', 'LCVP'), ('3', 'TLB'), ('4', 'Membro'))
-    DEPARTMENT = (('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'), ('9', 'IGE'), ('10', 'IGT'), )
+    DEPARTMENT = (
+    ('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'),
+    ('9', 'IGE'), ('10', 'IGT'),)
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
     podio_code = models.CharField(max_length=10, verbose_name='ID do Podio', unique=True)
     first_name = models.CharField(max_length=20, verbose_name='Nome')
     last_name = models.CharField(max_length=20, verbose_name='Sobrenome')
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
-    post = models.CharField(max_length=2, choices=POST, blank=True, null=True,)
+    post = models.CharField(max_length=2, choices=POST, blank=True, null=True, )
     department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True)
     leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL)
 
@@ -74,5 +79,6 @@ class MyUser(AbstractBaseUser):
         "Is the user a member of staff?"
         # Simplest possible answer: All admins are staff
         return self.is_admin
-from django.db import models
 
+    def get_absolute_url(self):
+        return reverse('member_edit', kwargs={'pk': self.pk})

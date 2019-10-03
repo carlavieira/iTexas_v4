@@ -67,35 +67,28 @@ def user_login(request):
         return render(request, 'user_login.html', {})
 
 
-def member_list(request, template_name='members/member_list.html'):
-    user = MyUser.objects.all()
-    data = {}
-    data['object_list'] = user
-    return render(request, template_name, data)
+def member_list(request):
+    users = MyUser.objects.all()
+    return render(request, 'members/member_list.html', {'users': users})
 
 
-def member_view(request, pk, template_name='members/member_detail.html'):
-    user = get_object_or_404(MyUser, pk=pk)
-    return render(request, template_name, {'object': user})
-
-
-def member_update(request, pk, template_name='members/member_form.html'):
-    user = get_object_or_404(MyUser, pk=pk)
+def member_update(request, podio_code):
+    user = MyUser.objects.get(podio_code=podio_code)
     form = UserForm(request.POST or None, instance=user)
     if form.is_valid():
         form.save()
         return redirect('member_list')
-    return render(request, template_name, {'form': form})
+    return render(request, 'members/member_update.html', {'form': form, 'user': user})
 
 
-def member_delete(request, pk, template_name='members/member_confirm_delete.html'):
-    user = get_object_or_404(MyUser, pk=pk)
+def member_delete(request, podio_code):
+    user = MyUser.objects.get(podio_code=podio_code)
     if request.method == 'POST':
         user.delete()
         return redirect('member_list')
-    return render(request, template_name, {'object': user})
+    return render(request, 'members/member_confirm_delete.html', {'user': user})
 
 
-def member_view(request, pk, template_name='members/member_detail.html'):
-    user = get_object_or_404(MyUser, pk=pk)
-    return render(request, template_name, {'object': user})
+def member_view(request, podio_code):
+    user = get_object_or_404(MyUser, podio_code=podio_code)
+    return render(request, 'members/member_detail.html', {'user': user})
