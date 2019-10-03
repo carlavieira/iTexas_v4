@@ -45,7 +45,8 @@ def register(request):
         user_form = UserForm()
     return render(request, 'registration.html',
                   {'user_form': user_form,
-                   'registered': registered})
+                   'registered': registered,
+                  'request_user': request.user})
 
 
 def user_login(request):
@@ -69,7 +70,7 @@ def user_login(request):
 
 def member_list(request):
     users = MyUser.objects.all()
-    return render(request, 'members/member_list.html', {'users': users})
+    return render(request, 'members/member_list.html', {'users': users, 'request_user': request.user})
 
 
 def member_update(request, podio_code):
@@ -78,7 +79,7 @@ def member_update(request, podio_code):
     if form.is_valid():
         form.save()
         return redirect('member_list')
-    return render(request, 'members/member_update.html', {'form': form, 'user': user})
+    return render(request, 'members/member_update.html', {'form': form, 'user': user, 'request_user': request.user})
 
 
 def member_delete(request, podio_code):
@@ -86,9 +87,9 @@ def member_delete(request, podio_code):
     if request.method == 'POST':
         user.delete()
         return redirect('member_list')
-    return render(request, 'members/member_confirm_delete.html', {'user': user})
+    return render(request, 'members/member_confirm_delete.html', {'user': user,  'request_user': request.user})
 
 
 def member_view(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
-    return render(request, 'members/member_detail.html', {'user': user})
+    return render(request, 'members/member_detail.html', {'user': user, 'request_user': request.user})

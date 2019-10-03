@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% if user.is_authenticated %}
     {% block body_block %}
-    <h2>Detalhe do membro</h2>
+    <h2 class="title">Detalhe do membro</h2>
                 <li> {{ user.first_name  }} {{ user.last_name }}</li>
                 <li> ID: {{ user.podio_code }}</li>
                 <li> Área: {{ user.get_department_display }}</li>

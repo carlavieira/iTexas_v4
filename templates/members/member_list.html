@@ -20,8 +20,8 @@
                 <tr>
                         <td>{{ user.first_name }} {{ user.last_name }}</td>
                         <td>{{ user.podio_code }}</td>
-                        <td>{{ user.post }} </td>
-                        <td>{{ user.departament }}</td>
+                        <td>{{ user.get_post_display }} </td>
+                        <td>{{ user.get_department_display  }}</td>
                         <td>{{ user.leader }}</td>
                         <td><a href="{% url 'member_view' user.podio_code %}">Editar</a></td>
                 </tr>
