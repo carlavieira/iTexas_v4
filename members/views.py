@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView
 
-from members.forms import UserForm
+from members.forms import UserForm, UserFormEdit
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -67,21 +67,21 @@ def user_login(request):
     else:
         return render(request, 'user_login.html', {})
 
-
+@login_required
 def member_list(request):
     users = MyUser.objects.all()
     return render(request, 'members/member_list.html', {'users': users, 'request_user': request.user})
 
-
+@login_required
 def member_update(request, podio_code):
     user = MyUser.objects.get(podio_code=podio_code)
-    form = UserForm(request.POST or None, instance=user)
+    form = UserFormEdit(request.POST or None, instance=user)
     if form.is_valid():
         form.save()
         return redirect('member_list')
     return render(request, 'members/member_update.html', {'form': form, 'user': user, 'request_user': request.user})
 
-
+@login_required
 def member_delete(request, podio_code):
     user = MyUser.objects.get(podio_code=podio_code)
     if request.method == 'POST':
@@ -89,7 +89,7 @@ def member_delete(request, podio_code):
         return redirect('member_list')
     return render(request, 'members/member_confirm_delete.html', {'user': user, 'request_user': request.user})
 
-
+@login_required
 def member_view(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
     return render(request, 'members/member_detail.html', {'user': user, 'request_user': request.user})

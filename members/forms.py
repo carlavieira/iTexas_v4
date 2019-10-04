@@ -15,11 +15,11 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('podio_code', 'password', 'email', 'first_name', 'last_name', 'department', 'post', 'leader')
+        fields = ('podio_code', 'password', 'email', 'first_name', 'last_name', 'department', 'post', 'leader', 'is_active', 'is_admin')
 
 
 class UserFormEdit(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('podio_code', 'email', 'first_name', 'last_name', 'department', 'post', 'leader')
+        exclude = ('password', 'last_login')
