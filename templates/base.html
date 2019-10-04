@@ -27,8 +27,8 @@
         <div class="menu-contents">
             <div class="profile-picture"></div>
             <div class="member-infos">
-                <h2 class="member-name">{{ user.first_name }} {{ user.last_name }}</h2>
-                <h3 class="member-area">{{ user.post }} de {{ user.department }}</h3>
+                <h2 class="member-name">{{ request_user.first_name }} {{ request_user.last_name }}</h2>
+                <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
             </div>
 
             <ul class="function-list">
@@ -49,12 +49,12 @@
         <div class="menu-area">
             <div class="profile-picture"></div>
             <div class="member-infos">
-                <h2 class="member-name">{{ user.first_name }} {{ user.last_name }}</h2>
-                <h3 class="member-area">{{ user.get_post_display }} de {{ user.get_department_display }}</h3>
+                <h2 class="member-name">{{ request_user.first_name }} {{ request_user.last_name }}</h2>
+                <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
             </div>
             <ul class="function-list">
                 <li><a href="{% url 'member_list' %}" class="button">Lista de Membros</a></li>
-                <li><a href="" class="button">Editar Perfil</a></li>
+                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Perfil</a></li>
                 <li><a href="{% url 'register' %}" class="button">Cadastrar Membro</a></li>
                 <li><a href="" class="button">Marcar Presença</a></li>
                 {% if user.is_authenticated %}
