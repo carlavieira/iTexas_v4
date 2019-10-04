@@ -1,6 +1,4 @@
-from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView
-
+from django.shortcuts import get_object_or_404, redirect
 from members.forms import UserForm, UserFormEdit
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
@@ -13,7 +11,7 @@ from members.models import MyUser
 
 
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'index.html', {'request_user': request.user})
 
 
 @login_required

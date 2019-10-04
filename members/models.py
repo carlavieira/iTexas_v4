@@ -55,6 +55,7 @@ class MyUser(AbstractBaseUser):
     post = models.CharField(max_length=2, choices=POST, blank=True, null=True, verbose_name='Cargo')
     department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True, verbose_name='Área')
     leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Líder')
+    is_working = models.BooleanField(default=False)
 
     objects = MyUserManager()
 
