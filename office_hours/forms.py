@@ -1,9 +1,11 @@
-from django.forms import forms
+from django import forms
+from django.forms import ModelForm
 
 from office_hours.models import OfficeHour
 
 
-class OfficeHourForm(forms.ModelForm):
+class OfficeHourForm(ModelForm):
+
     class Meta:
         model = OfficeHour
-        fields = ('date', 'checkin_time', 'checkout_time')
+        exclude = ('date', )

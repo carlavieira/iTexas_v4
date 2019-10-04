@@ -4,7 +4,7 @@
         {% if user.is_working %}
         <button type="submit">CHECK OUT</button>
         {% else %}
-        <button type="submit">CHECK IN</button>
+        <a href="{% url 'checkin' %}">Check-in</a>
         {% endif %}
     {% endblock %}
 {% else %}
