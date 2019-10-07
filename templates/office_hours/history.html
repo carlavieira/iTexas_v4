@@ -9,15 +9,17 @@
                 <th class="table-column">Dia</th>
                 <th class="table-column">Hora do Check-in</th>
                 <th class="table-column">Hora do Check-out</th>
+                <th class="table-column">Duração</th>
             </tr>
             </thead>
                 <tbody>
-            {% for officehour in office_hours %}
+            {% for office_hour in office_hours %}
 
                 <tr>
                         <td>{{ office_hour.date }}</td>
                         <td>{{ office_hour.checkin_time }}</td>
-                        <td>{{ office_hours.checkout_time }} </td>
+                        <td>{{ office_hour.checkout_time }} </td>
+                        <td>{{ office_hour.duration }} </td>
                 </tr>
 
             {% endfor %}

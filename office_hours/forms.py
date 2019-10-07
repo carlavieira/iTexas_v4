@@ -8,4 +8,4 @@ class OfficeHourForm(ModelForm):
 
     class Meta:
         model = OfficeHour
-        exclude = ('date', )
+        fields = ('member', 'date', 'checkin_time', 'checkout_time', 'duration')

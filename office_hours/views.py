@@ -1,10 +1,10 @@
-import datetime
+
+from datetime import datetime, date
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from django.utils import timezone
 
-from members.models import MyUser
-from office_hours.forms import OfficeHourForm
 from office_hours.models import OfficeHour
 
 
@@ -13,28 +13,27 @@ def check(request):
 
 
 def checkin(request):
-    user = MyUser.objects.get(id=request.user.id)
-    if user.is_working:
+    if request.user.is_working:
         return HttpResponse("Você já está fazendo office hour :)")
     else:
-        officehour = OfficeHour
-        officehour.checkin_time = datetime.datetime.now().strftime('%H:%M:%S')
-        officehour.date = datetime.datetime.now().strftime('%DD/%MM/%YY')
+        officehour = OfficeHour.objects.create(member=request.user)
         officehour.save()
-        user.is_working = True
+        request.user.is_working = True
+        request.user.save()
         return redirect('office_hours_history')
-    return render(request, 'office_hours/history.html', {'request_user': request.user})
+    return render(request, {'request_user': request.user})
 
 
 def checkout(request):
-    user = MyUser.objects.get(user=request.user)
-    if user.is_working:
-        today = datetime.datetime.now().strftime('%DD/%MM/%YY')
-        officehour = OfficeHour.objects.get(member=request.user, checkout="", date=today)
-        officehour.checkout_time = datetime.datetime.now().strftime('%H:%M:%S')
-        officehour.duration = officehour.checkout_time - officehour.checkin_time
+    if request.user.is_working:
+        officehour = OfficeHour.objects.get(member=request.user, checkout_time__isnull=True)
+        officehour.checkout_time = timezone.now()
+        print(officehour.checkout_time)
+        duration = datetime.combine(date.min, officehour.checkout_time) - datetime.combine(date.min, officehour.checkin_time)
+        officehour.duration = duration
         officehour.save()
-        user.is_working = False
+        request.user.is_working = False
+        request.user.save()
         return redirect('office_hours_history')
     else:
         return HttpResponse("Você precisa fazer check in antes :)")
@@ -42,5 +41,5 @@ def checkout(request):
 
 
 def history(request):
-    office_hours = OfficeHour.objects.get(member=request.user)
-    return render(request, 'office_hours/history.html', {'request_user': request.user, 'office_hours': office_hours})
+    office_hours = OfficeHour.objects.filter(member=request.user)
+    return render(request, 'office_hours/history.html', {'office_hours': office_hours, 'request_user': request.user})

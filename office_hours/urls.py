@@ -6,6 +6,7 @@ from office_hours import views
 urlpatterns = [
     path('', views.check, name='check'),
     path('checkin/', views.checkin, name='checkin'),
+    path('checkout/', views.checkout, name='checkout'),
     path('history/', views.history, name='office_hours_history'),
 
 ]

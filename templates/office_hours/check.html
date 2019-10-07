@@ -2,7 +2,7 @@
 {% if user.is_authenticated %}
     {% block body_block %}
         {% if user.is_working %}
-        <button type="submit">CHECK OUT</button>
+        <a href="{% url 'checkout' %}">Check-out</a>
         {% else %}
         <a href="{% url 'checkin' %}">Check-in</a>
         {% endif %}

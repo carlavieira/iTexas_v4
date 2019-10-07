@@ -38,7 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'members.apps.MembersConfig',
-    'office_hours'
+    'office_hours.apps.OfficeHoursConfig'
 
 )
 
