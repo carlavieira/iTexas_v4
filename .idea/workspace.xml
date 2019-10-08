@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f6e04c9-c112-466e-a7b5-34bd6fa60160" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/templates/office_hours/teste.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iTexas_v4/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/iTexas_v4/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/members/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/members/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/office_hours/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/office_hours/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/office_hours/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/office_hours/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/office_hours/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/office_hours/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/office_hours/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/office_hours/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/office_hours/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/office_hours/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/office_hours/check.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/office_hours/check.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/office_hours/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/office_hours/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/members/member_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/members/member_list.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,7 +92,7 @@
       <workItem from="1569619276852" duration="4894000" />
       <workItem from="1569761535215" duration="9026000" />
       <workItem from="1570030175416" duration="9258000" />
-      <workItem from="1570218438886" duration="23158000" />
+      <workItem from="1570218438886" duration="29926000" />
     </task>
     <servers />
   </component>

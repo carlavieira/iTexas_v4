@@ -1,5 +1,5 @@
 
-from datetime import datetime, date
+from datetime import datetime, date, timedelta
 
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -28,9 +28,7 @@ def checkout(request):
     if request.user.is_working:
         officehour = OfficeHour.objects.get(member=request.user, checkout_time__isnull=True)
         officehour.checkout_time = timezone.now()
-        print(officehour.checkout_time)
-        duration = datetime.combine(date.min, officehour.checkout_time) - datetime.combine(date.min, officehour.checkin_time)
-        officehour.duration = duration
+        officehour.duration = officehour.checkout_time - officehour.checkin_time
         officehour.save()
         request.user.is_working = False
         request.user.save()
