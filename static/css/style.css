@@ -439,7 +439,6 @@ input[type=number] {
     width: 280px;
 }
 
-
 .registration-area .title {
     margin-top: 20px;
     font-size: 24px;
@@ -492,6 +491,38 @@ input[type=number] {
 .body-container .hour-description {
     font-size: 16px;
     color: #6e6e6e;
+}
+
+.member-detail-section {
+    padding: 15px 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 30px;
+    max-width: 600px;
+}
+.member-detail-section .member-detail-name {
+    font-size: 26px;
+    color: #0e779f;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.member-detail-section ul {
+    list-style: none;
+}
+
+.member-detail-section li {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #595959;
+}
+
+
+.member-detail-section .detail-label {
+    font-size: 16px;
+    color: #0e8dbc;
 }
 
 

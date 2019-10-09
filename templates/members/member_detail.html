@@ -1,16 +1,17 @@
 {% extends "base.html" %}
 {% if user.is_authenticated %}
     {% block body_block %}
-    <h2>Detalhe do membro</h2>
-        <ul>
-                <li> {{ user.first_name  }} {{ user.last_name }}</li>
-                <li> ID: {{ user.podio_code }}</li>
-                <li> Área: {{ user.get_department_display }}</li>
-                <li> Cargo: {{ user.get_post_display }}</li>
-                <li> Blá Blá Blá todas as informacões</li>
-        </ul>
-        <a href="{% url 'member_delete' user.podio_code %}">Deletar</a>
-        <a href="{% url 'member_edit' user.podio_code %}">Editar</a>
+        <div class="member-detail-section">
+            <h2 class="member-detail-name">{{ user.first_name  }} {{ user.last_name }}</h2>
+            <ul>
+                    <li><span class="detail-label">ID:</span> {{ user.podio_code }}</li>
+                    <li><span class="detail-label">Área:</span> {{ user.get_department_display }}</li>
+                    <li><span class="detail-label">Cargo:</span> {{ user.get_post_display }}</li>
+                    <li><span class="detail-label">Email: </span> {{ user.email}}</li>
+            </ul>
+            <a href="{% url 'member_delete' user.podio_code %}">Deletar</a>
+            <a href="{% url 'member_edit' user.podio_code %}">Editar</a>
+        </div>
     {% endblock %}
 {% else %}
     <h2>Logar</h2>
