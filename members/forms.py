@@ -19,6 +19,10 @@ class UserForm(forms.ModelForm):
 
 
 class UserFormEdit(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(UserFormEdit, self).__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
     class Meta:
         model = MyUser
         exclude = ('password', 'last_login', 'is_working')

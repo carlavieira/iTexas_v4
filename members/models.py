@@ -50,13 +50,12 @@ class MyUser(AbstractBaseUser):
     podio_code = models.CharField(max_length=10, verbose_name='ID do Podio', unique=True)
     first_name = models.CharField(max_length=20, verbose_name='Nome')
     last_name = models.CharField(max_length=20, verbose_name='Sobrenome')
-    is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=False)
     post = models.CharField(max_length=2, choices=POST, blank=True, null=True, verbose_name='Cargo')
     department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True, verbose_name='Área')
     leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Líder')
     is_working = models.BooleanField(default=False)
-
+    is_active = models.BooleanField(default=True, verbose_name='Está ativo')
+    is_admin = models.BooleanField(default=False, verbose_name='É administrador')
     objects = MyUserManager()
 
     USERNAME_FIELD = 'podio_code'

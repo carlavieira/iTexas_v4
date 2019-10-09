@@ -425,6 +425,21 @@ input[type=number] {
     width: 280px;
 }
 
+.registration-area input[type=checkbox]{
+    margin-left: 10px;
+    height: 20px;
+    font-size: 15px;
+    width: 100%;
+}
+
+.registration-area select {
+    margin-left: 10px;
+    height: 35px;
+    font-size: 15px;
+    width: 280px;
+}
+
+
 .registration-area .title {
     margin-top: 20px;
     font-size: 24px;

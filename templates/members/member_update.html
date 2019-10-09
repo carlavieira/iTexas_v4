@@ -1,13 +1,18 @@
 {% extends "base.html" %}
 {% if user.is_authenticated %}
     {% block body_block %}
-        <h1 class="title">Update Member</h1>
-
-        <form method="POST">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Save</button>
-        </form>
+        <div class="registration-area">
+            <h1 class="title">Update Member</h1>
+            <div class="form-group">
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <p class="par-center">
+                        <input class="register-button" type="submit" value="Registrar">
+                    </p>
+                </form>
+            </div>
+        </div>
     {% endblock %}
 {% else %}
     <h2>Logar</h2>
