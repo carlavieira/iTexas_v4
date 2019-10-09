@@ -1,0 +1,7 @@
+Performing system checks...
+
+System check identified no issues (0 silenced).
+October 09, 2019 - 00:45:10
+Django version 2.2.5, using settings 'iTexas_v4.settings'
+Starting development server at http://127.0.0.1:8000/
+Quit the server with CTRL-BREAK.

@@ -2,10 +2,17 @@
 {% if user.is_authenticated %}
     {% block body_block %}
         {% if user.is_working %}
-        <a href="{% url 'checkout' %}">Check-out</a>
+            <h4 class="title">Realizar Check-out</h4>
+            <button type="button" class="btn btn-danger button-check">
+                <a class="link-button" href="{% url 'checkout' %}">Check-out</a>
+            </button>
         {% else %}
-        <a href="{% url 'checkin' %}">Check-in</a>
+            <h2 class="title">Realizar Check-in</h2>
+            <button type="button" class="btn btn-success button-check">
+               <a class="link-button" href="{% url 'checkin' %}">Check-in</a>
+            </button>
         {% endif %}
+        <p class="hour-description">09/10/2019 04:35 {{ officehour.checkout_time }}</p>
     {% endblock %}
 {% else %}
     <h2>Logar</h2>

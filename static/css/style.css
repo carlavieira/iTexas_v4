@@ -460,5 +460,24 @@ input[type=number] {
     margin-top: 15px;
 }
 
+.link-button {
+    text-decoration: none;
+    color: white;
+}
+.link-button:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.body-container .button-check {
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+.body-container .hour-description {
+    font-size: 16px;
+    color: #6e6e6e;
+}
+
 
 

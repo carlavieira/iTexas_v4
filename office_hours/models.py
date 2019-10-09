@@ -1,8 +1,8 @@
 from datetime import date
-
+from datetime import datetime, timezone
+from pytz import timezone
 from django.db import models
 from django.utils import timezone
-
 from members.models import MyUser
 
 
