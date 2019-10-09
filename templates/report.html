@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+    {% block body_block %}
+
+
+    {% endblock %}
+{% else %}
+    <h2>Logar</h2>
+{% endif %}

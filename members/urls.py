@@ -13,4 +13,5 @@ urlpatterns = [
     path('view/<int:podio_code>', views.member_view, name='member_view'),
     path('edit/<int:podio_code>', views.member_update, name='member_edit'),
     path('delete/<int:podio_code>', views.member_delete, name='member_delete'),
+    path('report/<int:podio_code>', views.member_report, name='member_report'),
 ]

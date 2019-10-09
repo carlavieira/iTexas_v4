@@ -91,3 +91,8 @@ def member_delete(request, podio_code):
 def member_view(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
     return render(request, 'members/member_detail.html', {'user': user, 'request_user': request.user})
+
+
+def member_report(request, podio_code):
+    user = get_object_or_404(MyUser, podio_code=podio_code)
+    return render(request, 'report.html', {'user': user, 'request_user': request.user})
