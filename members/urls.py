@@ -6,9 +6,9 @@ from django.urls import path
 
 # Be careful setting the name to just /login use userlogin instead!
 urlpatterns = [
-    url('register/', views.register, name='register'),
-    url('user_login/', views.user_login, name='user_login'),
-    url('user_logout/', views.user_logout, name='user_logout'),
+    path('register/', views.register, name='register'),
+    path('user_login/', views.user_login, name='user_login'),
+    path('user_logout/', views.user_logout, name='user_logout'),
     path('', views.member_list, name='member_list'),
     path('view/<int:podio_code>', views.member_view, name='member_view'),
     path('edit/<int:podio_code>', views.member_update, name='member_edit'),

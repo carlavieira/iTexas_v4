@@ -11,6 +11,7 @@
                 <th class="table-column">Hora do Check-in</th>
                 <th class="table-column">Hora do Check-out</th>
                 <th class="table-column">Duração</th>
+                <th class="table-column"> </th>
             </tr>
             </thead>
                 <tbody>
@@ -21,6 +22,7 @@
                     <td>{{ office_hour.checkin_time|date:'H:i' }}</td>
                     <td>{{ office_hour.checkout_time|date:'H:i' }} </td>
                     <td id="duration">{{ office_hour.duration }}</td>
+                    <td><a href="{% url 'officehour_edit' office_hour.id %}">Editar</a></td>
                 </tr>
             {% endfor %}
                 </tbody>

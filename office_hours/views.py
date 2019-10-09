@@ -40,22 +40,22 @@ def checkout(request):
 
 @login_required
 def myhistory(request):
-    office_hours = OfficeHour.objects.filter(member=request.user)
+    office_hours = OfficeHour.objects.filter(member=request.user).order_by('-checkin_time')
     return render(request, 'office_hours/myhistory.html', {'office_hours': office_hours, 'request_user': request.user})
 
 @login_required
 def officehour_list(request):
-    office_hours = OfficeHour.objects.all()
+    office_hours = OfficeHour.objects.all().order_by('-checkin_time')
     return render(request, 'office_hours/officehour_list.html', {'office_hours': office_hours, 'request_user': request.user})
 
 @login_required
 def officehour_update(request, id):
     officehour = OfficeHour.objects.get(id=id)
-    form = OfficeHourForm(request.POST or None, instance=OfficeHour)
+    form = OfficeHourForm(request.POST or None, instance=officehour)
     if form.is_valid():
         form.save()
         return redirect('officehours_list')
-    return render(request, 'office_hours/officehour_update.html', {'form': form, 'officehour': officehour, 'request_user': request.user})
+    return render(request, 'office_hours/officehour_update.html', {'form': form, 'request_user': request.user})
 
 @login_required
 def officehour_delete(request, id):
