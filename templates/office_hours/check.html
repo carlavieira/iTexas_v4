@@ -12,7 +12,7 @@
                <a class="link-button" href="{% url 'checkin' %}">Check-in</a>
             </button>
         {% endif %}
-        <p class="hour-description">09/10/2019 04:35 {{ officehour.checkout_time }}</p>
+        <p class="hour-description"> {{ timenow|date:'d/m/Y  H:i' }} <p>
     {% endblock %}
 {% else %}
     <h2>Logar</h2>

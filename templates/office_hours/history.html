@@ -14,18 +14,15 @@
             </thead>
                 <tbody>
             {% for office_hour in office_hours %}
-
                 <tr>
-                    <td>{{ office_hour.date }}</td>
-                    <td>{{ office_hour.checkin_time|date:'d/m/Y  H:i' }}</td>
-                    <td>{{ office_hour.checkout_time|date:'d/m/Y  H:i' }} </td>
-                    <td>{{ office_hour.duration }} </td>
+                    <td>{{ office_hour.date|date:'d/m/Y' }}</td>
+                    <td>{{ office_hour.checkin_time|date:'H:i' }}</td>
+                    <td>{{ office_hour.checkout_time|date:'H:i' }} </td>
+                    <td id="duration">{{ office_hour.duration }}</td>
                 </tr>
-
             {% endfor %}
                 </tbody>
                 </table>
-
     {% endblock %}
 {% else %}
     <h2>Logar</h2>

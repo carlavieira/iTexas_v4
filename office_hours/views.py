@@ -9,7 +9,8 @@ from office_hours.models import OfficeHour
 
 
 def check(request):
-    return render(request, 'office_hours/check.html', {'request_user': request.user})
+    timenow = timezone.now()
+    return render(request, 'office_hours/check.html', {'request_user': request.user, 'timenow': timenow})
 
 
 def checkin(request):
