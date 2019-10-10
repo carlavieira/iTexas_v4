@@ -63,6 +63,7 @@
                 {% endif %}
                 <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li>
                 <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>
+                <li><a href="{% url 'member_report' user.podio_code %}" class="button">Meu Critério de Membresia</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'user_logout' %}">Logout</a></li>
                 {% else %}

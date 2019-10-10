@@ -8,6 +8,7 @@ from django.shortcuts import render
 
 # Create your views here.
 from members.models import MyUser
+from office_hours.models import OfficeHour
 
 
 def index(request):
@@ -95,4 +96,5 @@ def member_view(request, podio_code):
 
 def member_report(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
-    return render(request, 'report.html', {'user': user, 'request_user': request.user})
+    office_hours = OfficeHour.objects.filter(member=request.user).order_by('-checkin_time')
+    return render(request, "report.html", {'user': user, 'office_hours': office_hours, 'request_user': request.user})

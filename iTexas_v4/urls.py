@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^special/', views.special, name='special'),
     url(r'^members/', include('members.urls')),
     url(r'^office_hours/', include('office_hours.urls')),
+    url(r'^meetings/', include('meetings.urls')),
     url(r'^logout/$', views.user_logout, name='logout'),
 ]

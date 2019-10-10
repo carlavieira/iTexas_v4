@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% if user.is_authenticated %}
     {% block body_block %}
+        <h2 class="member-detail-name">{{ user.first_name  }} {{ user.last_name }}</h2>
 
 
     {% endblock %}
