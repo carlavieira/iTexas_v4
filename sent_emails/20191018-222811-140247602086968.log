@@ -1,0 +1,26 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: Password reset on 127.0.0.1:8000
+From: webmaster@localhost
+To: daniellyncon@hotmail.com
+Date: Sat, 19 Oct 2019 01:28:11 -0000
+Message-ID: 
+ <157144849182.13100.10623142774258527333@danly-System-Product-Name>
+
+
+You're receiving this email because you requested a password reset for your user account at 127.0.0.1:8000.
+
+Please go to the following page and choose a new password:
+
+http://127.0.0.1:8000/members/reset-password/confirm/MTM-5ao-4bfcd6377cce9861148b/
+
+Your username, in case you've forgotten: 122690
+
+Thanks for using our site!
+
+The 127.0.0.1:8000 team
+
+
+
+-------------------------------------------------------------------------------

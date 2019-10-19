@@ -1,6 +1,8 @@
 from django.conf.urls import url
 from members import views
 from django.urls import path
+from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
+    PasswordResetCompleteView
 
 # SET THE NAMESPACE!
 
@@ -13,4 +15,18 @@ urlpatterns = [
     path('view/<int:podio_code>', views.member_view, name='member_view'),
     path('edit/<int:podio_code>', views.member_update, name='member_edit'),
     path('delete/<int:podio_code>', views.member_delete, name='member_delete'),
+
+    url(r'^reset-password/$', PasswordResetView.as_view(template_name='registration/password_reset_form.html')
+        , name='reset_password'),
+
+    url(r'^reset-password/done/$', PasswordResetDoneView.as_view(template_name='registration/password_reset_done.html')
+        , name='password_reset_done'),
+
+    url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+        PasswordResetConfirmView.as_view(template_name='registration/password_reset_confirm.html')
+        , name='password_reset_confirm'),
+
+    url(r'^reset-password/complete/$',
+        PasswordResetCompleteView.as_view(template_name='registration/password_reset_complete.html'),
+        name='password_reset_complete'),
 ]

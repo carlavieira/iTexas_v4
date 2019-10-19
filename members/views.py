@@ -65,10 +65,12 @@ def user_login(request):
     else:
         return render(request, 'user_login.html', {})
 
+
 @login_required
 def member_list(request):
     users = MyUser.objects.all()
     return render(request, 'members/member_list.html', {'users': users, 'request_user': request.user})
+
 
 @login_required
 def member_update(request, podio_code):
@@ -79,6 +81,7 @@ def member_update(request, podio_code):
         return redirect('member_list')
     return render(request, 'members/member_update.html', {'form': form, 'user': user, 'request_user': request.user})
 
+
 @login_required
 def member_delete(request, podio_code):
     user = MyUser.objects.get(podio_code=podio_code)
@@ -87,7 +90,15 @@ def member_delete(request, podio_code):
         return redirect('member_list')
     return render(request, 'members/member_confirm_delete.html', {'user': user, 'request_user': request.user})
 
+
 @login_required
 def member_view(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
     return render(request, 'members/member_detail.html', {'user': user, 'request_user': request.user})
+
+
+def resetar_senha(request):
+    user = MyUser.objects.get(podio_code=request.POST["podio_code"])
+    user.set_password(MyUser.objects.make_random_password())
+    user.save()
+    return HttpResponseRedirect("password_reset_confirm.html")
