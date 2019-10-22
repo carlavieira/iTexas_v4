@@ -53,16 +53,21 @@
                 <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
             </div>
             <ul class="function-list">
+                {% if user.is_admin %}
                 <li><a href="{% url 'member_list' %}" class="button">Lista de Membros</a></li>
                 <li><a href="{% url 'officehour_list' %}" class="button">Lista de Office Hours</a></li>
+                <li><a href="{% url 'meeting_list' %}" class="button">Lista de Reuniões</a></li>
                 <li><a href="{% url 'register' %}" class="button">Cadastrar Novo Membro</a></li>
+                {% endif %}
                 {% if user.is_working %}
                     <li><a href="{% url 'check' %}" class="button">Check out</a></li>
                 {% else %}
                     <li><a href="{% url 'check' %}" class="button">Check in</a></li>
                 {% endif %}
+                <li><a href="{% url 'new_meeting' %}" class="button">Registrar Reunião</a></li>
                 <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li>
                 <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>
+                <li><a href="{% url 'my_meetings' %}" class="button">Minhas Reuniões</a></li>
                 <li><a href="{% url 'member_report' user.podio_code %}" class="button">Meu Critério de Membresia</a></li>
                 {% if user.is_authenticated %}
                     <li><a href="{% url 'user_logout' %}">Logout</a></li>

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% if user.is_authenticated %}
+    {% block body_block %}
+    <form method="post">
+        {% csrf_token %}
+        <h2>Você tem certeza que quer a reunião do dia {{ meeting.date }} as {{ meeting.time }} ?</h2>
+        <button type="submit">Confirmar</button>
+    </form>
+    {% endblock %}
+{% else %}
+    <h2>Logar</h2>
+{% endif %}
