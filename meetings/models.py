@@ -16,5 +16,6 @@ class Meeting(models.Model):
     time = models.TimeField(verbose_name='Hora', default=timezone.now)
 
 #class Participation(models.Model):
-#    present = models.BooleanField()
-#    member = models.ForeignKey(MyUser)
+#    present = models.BooleanField(default=False)
+#    member = models.ForeignKey(MyUser, verbose_name='Participante', on_delete=models.PROTECT())
+#    meeting = models.ForeignKey(Meeting, verbose_name='Reunião', on_delete=models.CASCADE())
