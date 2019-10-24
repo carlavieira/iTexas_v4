@@ -12,6 +12,8 @@
                     <form enctype="multipart/form-data" method="POST">
                         {% csrf_token %}
                         {{ meeting_form.as_p }}
+                        {{ participation_form1.as_p }}
+                        {{ participation_form2.as_p }}
                         <p class="par-center">
                             <input class="register-button" type="submit" value="Registrar">
                         </p>
