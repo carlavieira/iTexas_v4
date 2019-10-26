@@ -169,6 +169,25 @@ input::-webkit-inner-spin-button {
     text-decoration: none;
     color: #accaf3;
 }
+
+.login-panel .forgot-pass-area {
+    margin-top: 10px;
+}
+
+.login-panel .forgot-pass-area .title {
+    font-size: 32px;
+    text-align: center;
+}
+
+.login-panel .forgot-pass-area .forgot-description {
+    text-align: justify;
+    font-size: 14px;
+    color: #67a1f1;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+
 .myButton:active {
 	position:relative;
 	top:1px;
@@ -242,8 +261,6 @@ input[type=number] {
     left: 0;
     display: none;
 }
-
-
 
 .menu-mobile ul {
     display: flex;
@@ -518,7 +535,6 @@ input[type=number] {
     font-size: 16px;
     color: #595959;
 }
-
 
 .member-detail-section .detail-label {
     font-size: 16px;

@@ -7,6 +7,7 @@
                     <li><span class="detail-label">ID:</span> {{ user.podio_code }}</li>
                     <li><span class="detail-label">Área:</span> {{ user.get_department_display }}</li>
                     <li><span class="detail-label">Cargo:</span> {{ user.get_post_display }}</li>
+                    <li><span class="detail-label">Lider: </span> {{ user.leader}}</li>
                     <li><span class="detail-label">Email: </span> {{ user.email}}</li>
             </ul>
             <a href="{% url 'member_delete' user.podio_code %}">Deletar</a>
