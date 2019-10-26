@@ -27,15 +27,32 @@
         <div class="menu-contents">
             <div class="profile-picture"></div>
             <div class="member-infos">
-                <h2 class="member-name">{{ request_user.first_name }} {{ request_user.last_name }}</h2>
+                <a class="member-name" href="{% url 'member_edit' user.podio_code %}">{{ request_user.first_name }} {{ request_user.last_name }}</a>
                 <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
             </div>
 
             <ul class="function-list">
+                {% if user.is_admin %}
                 <li><a href="{% url 'member_list' %}" class="button">Lista de Membros</a></li>
-                <li><a href="" class="button">Editar Perfil</a></li>
-                <li><a href="" class="button">Marcar Presença</a></li>
-                <li><a href="">Logout</a></li>
+                <li><a href="{% url 'officehour_list' %}" class="button">Lista de Office Hours</a></li>
+                <li><a href="{% url 'meeting_list' %}" class="button">Lista de Reuniões</a></li>
+                <li><a href="{% url 'register' %}" class="button">Cadastrar Novo Membro</a></li>
+                {% endif %}
+                {% if user.is_working %}
+                    <li><a href="{% url 'check' %}" class="button">Check out</a></li>
+                {% else %}
+                    <li><a href="{% url 'check' %}" class="button">Check in</a></li>
+                {% endif %}
+                <li><a href="{% url 'new_meeting' %}" class="button">Registrar Reunião</a></li>
+{#                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li> #}
+                <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>
+                <li><a href="{% url 'my_meetings' %}" class="button">Minhas Reuniões</a></li>
+                <li><a href="{% url 'member_report' user.podio_code %}" class="button">Meu Critério de Membresia</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user_logout' %}">Logout</a></li>
+                {% else %}
+                    <li><a class="navbar-link" href="{% url 'user_login' %}">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
@@ -49,7 +66,7 @@
         <div class="menu-area">
             <div class="profile-picture"></div>
             <div class="member-infos">
-                <h2 class="member-name">{{ request_user.first_name }} {{ request_user.last_name }}</h2>
+                <a class="member-name" href="{% url 'member_edit' user.podio_code %}">{{ request_user.first_name }} {{ request_user.last_name }}</a>
                 <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
             </div>
             <ul class="function-list">
@@ -65,7 +82,7 @@
                     <li><a href="{% url 'check' %}" class="button">Check in</a></li>
                 {% endif %}
                 <li><a href="{% url 'new_meeting' %}" class="button">Registrar Reunião</a></li>
-                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li>
+{#                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li> #}
                 <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>
                 <li><a href="{% url 'my_meetings' %}" class="button">Minhas Reuniões</a></li>
                 <li><a href="{% url 'member_report' user.podio_code %}" class="button">Meu Critério de Membresia</a></li>
@@ -77,7 +94,7 @@
             </ul>
         </div>
     </div>
-    <div class="body-content">
+    <div  id="body-content" class="body-content">
         <div class="body-container">
             {% block body_block %}
             {% endblock %}
@@ -115,9 +132,14 @@
 <script>
     $(".btn-menu").click(function () {
         $(".menu-mobile").show();
+        $("#body-content").addClass('active')
+
     })
     $(".btn-close").click(function () {
         $(".menu-mobile").hide();
+        if($("#body-content").hasClass('active')) {
+            $("#body-content").removeClass('active')
+        }
     })
 </script>
 </body>
