@@ -187,6 +187,43 @@ input::-webkit-inner-spin-button {
     margin-bottom: 30px;
 }
 
+.login-panel .forgot-pass-area .forgot-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-panel .forgot-pass-area input[type=email] {
+    display: block;
+    width: 80%;
+    margin-left: 35px;
+    height: 35px;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.login-panel .forgot-pass-area label {
+    width: 40px;
+}
+
+.login-panel .forgot-pass-area .login-button {
+    margin-top: 25px;
+    width: 100px;
+    align-self: center;
+}
+
+@media (min-width: 280px) and (max-width: 480px) {
+    .forgot-pass-area {
+        padding: 20px;
+    }
+}
 
 .myButton:active {
 	position:relative;
