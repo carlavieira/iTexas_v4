@@ -3,8 +3,8 @@
     {% block body_block %}
 
         <h2 class="title">Lista de Membros</h2>
-        <table class="table">
-            <thead>
+        <table class="table" >
+            <thead class="thead-light">
             <tr>
                 <th class="table-column">Nome</th>
                 <th class="table-column">ID</th>
@@ -17,7 +17,7 @@
                 <tbody>
             {% for user in users %}
 
-                <tr>
+                <tr class="row-member-list" id="{{ user.podio_code }}">
                         <td>{{ user.first_name }} {{ user.last_name }}</td>
                         <td>{{ user.podio_code }}</td>
                         <td>{{ user.get_post_display }} </td>

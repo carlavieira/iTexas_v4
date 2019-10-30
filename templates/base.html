@@ -143,11 +143,19 @@
     })
 
     jQuery(document).ready(function($) {
-            $('.row-table').on('click', function () {
-                var id = $(this).attr('id');
-                document.location.href = "../edit/"+id;
-            });
+        $('.row-office-hours').on('click', function () {
+            var id = $(this).attr('id');
+            document.location.href = "../edit/"+id;
+        });
     });
+
+    jQuery(document).ready(function($) {
+        $('.row-member-list').on('click', function () {
+            var id = $(this).attr('id');
+            document.location.href = "view/"+id;
+        });
+    });
+
 </script>
 </body>
 </html>
