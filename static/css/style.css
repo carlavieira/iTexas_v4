@@ -540,6 +540,11 @@ input[type=number] {
     padding: .45rem;
 }
 
+.table tr:hover {
+    background-color:#0e8cba1f;
+    cursor: pointer;
+}
+
 table {
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
 }

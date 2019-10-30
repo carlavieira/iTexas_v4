@@ -17,13 +17,13 @@
             </thead>
                 <tbody>
             {% for office_hour in office_hours %}
-                <tr>
+                <tr class="row-table" id="{{ office_hour.id }}" >
                     <td><a href="{% url 'member_view' office_hour.member.podio_code %}">{{ office_hour.member.first_name }} {{ office_hour.member.last_name }}</a></td>
                     <td>{{ office_hour.date|date:'d/m/Y' }}</td>
                     <td>{{ office_hour.checkin_time|date:'H:i' }}</td>
                     <td>{{ office_hour.checkout_time|date:'H:i' }} </td>
                     <td id="duration">{{ office_hour.duration|format_datetime }}</td>
-                    <td><a href="{% url 'officehour_edit' office_hour.id %}">Editar</a></td>
+                    <td><a class="edit-office-hour-{{ office_hour.id }}" href="{% url 'officehour_edit' office_hour.id %}">Editar</a></td>
                 </tr>
             {% endfor %}
                 </tbody>

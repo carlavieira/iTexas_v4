@@ -141,6 +141,13 @@
             $("#body-content").removeClass('active')
         }
     })
+
+    jQuery(document).ready(function($) {
+            $('.row-table').on('click', function () {
+                var id = $(this).attr('id');
+                document.location.href = "../edit/"+id;
+            });
+    });
 </script>
 </body>
 </html>
