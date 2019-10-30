@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load datetime_filter %}
 {% if user.is_authenticated %}
     {% block body_block %}
 
@@ -21,7 +22,7 @@
                     <td>{{ office_hour.date|date:'d/m/Y' }}</td>
                     <td>{{ office_hour.checkin_time|date:'H:i' }}</td>
                     <td>{{ office_hour.checkout_time|date:'H:i' }} </td>
-                    <td id="duration">{{ office_hour.duration }}</td>
+                    <td id="duration">{{ office_hour.duration|format_datetime }}</td>
                     <td><a href="{% url 'officehour_edit' office_hour.id %}">Editar</a></td>
                 </tr>
             {% endfor %}
