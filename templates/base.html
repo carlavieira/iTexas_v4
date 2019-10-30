@@ -156,6 +156,13 @@
         });
     });
 
+        jQuery(document).ready(function($) {
+        $('.row-meetings').on('click', function () {
+            var id = $(this).attr('id');
+            document.location.href = "../edit/"+id;
+        });
+    });
+
 </script>
 </body>
 </html>

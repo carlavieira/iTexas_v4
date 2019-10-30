@@ -11,18 +11,18 @@
                 <th class="table-column">Dia</th>
                 <th class="table-column">Hora</th>
                 <th class="table-column">Participantes</th>
-                <th class="table-column"></th>
+{#                <th class="table-column"></th>#}
             </tr>
             </thead>
                 <tbody>
             {% for meeting in meetings %}
-                <tr>
+                <tr class="row-meetings" id="{{ meeting.id }}" >
                     <td>{{ meeting.leader.first_name }}</td>
                     <td>{{ meeting.get_type_display }}</td>
                     <td>{{ meeting.date|date:'d/m/Y' }}</td>
                     <td>{{ meeting.time|time:'H:i' }} </td>
                     <td>{{ meeting.participants.first_name }} </td>
-                    <td><a href="{% url 'meeting_edit' meeting.id %}">Editar</a></td>
+{#                    <td><a href="{% url 'meeting_edit' meeting.id %}">Editar</a></td>#}
                 </tr>
             {% endfor %}
                 </tbody>
