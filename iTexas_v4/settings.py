@@ -25,10 +25,15 @@ SECRET_KEY = '-s=cph$b-ntayzeog=$-4k_kgcz02+@&puj+y#c_)o5#45djl8'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['itexas.pythonanywhere.com']
 
-EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, "sent_emails")
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'itexasbh@gmail.com'
+EMAIL_HOST_PASSWORD = 'qnpumyzvorotyevd'
+
 # Application definition
 
 INSTALLED_APPS = (
