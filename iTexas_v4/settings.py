@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'members.apps.MembersConfig',
     'office_hours.apps.OfficeHoursConfig',
-    'meetings.apps.MeetingsConfig'
+    'meetings.apps.MeetingsConfig',
+    'events.apps.EventsConfig'
 
 )
 
