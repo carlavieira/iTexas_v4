@@ -125,6 +125,15 @@ body {
     align-items: center;
 }
 
+.login-panel .alert {
+    font-size: 14px;
+    padding: 0.20rem 1.25rem;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 5px;
+
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;

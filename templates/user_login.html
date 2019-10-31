@@ -29,6 +29,11 @@
                         <label for="password">Password:</label>
                         <input class="input-pass form-control" type="password" name="password" placeholder="Password">
                     </div>
+                    {% for message in messages %}
+                       <div class="alert alert-danger" id="alert-error">
+                           {{ message }}
+                       </div>
+                   {% endfor %}
                     <div class="button-session">
                         <input type="submit" class="login-button" name="login-button" value="Login">
                         <a class="forgot-pass" href={% url 'reset_password' %}>Esqueci minha senha</a>
@@ -42,4 +47,9 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+<script>
+    setTimeout(function () {
+      document.getElementById("alert-error").style.display = "none";
+    }, 3000);
+</script>
 </html>

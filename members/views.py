@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.contrib import messages
 
 # Create your views here.
 from members.models import MyUser
@@ -60,9 +61,8 @@ def user_login(request):
             else:
                 return HttpResponse("Your account was inactive.")
         else:
-            print("Someone tried to login and failed.")
-            print("They used username: {} and password: {}".format(podio_code, password))
-            return HttpResponse("Invalid login details given")
+            messages.error(request, 'Podio ID ou Senha incorreta')
+            return redirect('user_login')
     else:
         return render(request, 'user_login.html', {})
 
