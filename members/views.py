@@ -70,7 +70,31 @@ def user_login(request):
 @login_required
 def member_list(request):
     users = MyUser.objects.all()
-    return render(request, 'members/member_list.html', {'users': users, 'request_user': request.user})
+    name = ''
+    id = ''
+    post = ''
+    department = ''
+    leader = ''
+    if 'name' in request.GET:
+        name = request.GET['name']
+        users = users.filter(first_name__icontains=name)
+    if 'id' in request.GET:
+        id = request.GET['id']
+        users = users.filter(podio_code__icontains=id)
+    if 'post' in request.GET:
+        post = request.GET['post']
+        print(post)
+        users = users.filter(post__icontains=post)
+    if 'department' in request.GET:
+        department = request.GET['department']
+        users = users.filter(department__icontains=department)
+    if 'leader' in request.GET:
+        leader = request.GET['leader']
+        users = users.filter(leader__first_name__icontains=leader)
+
+    context = {'users': users, 'request_user': request.user, 'name': name, 'id': id,
+               'post': post, 'department': department, 'leader': leader}
+    return render(request, 'members/member_list.html', context)
 
 
 @login_required
@@ -98,15 +122,14 @@ def member_view(request, podio_code):
     return render(request, 'members/member_detail.html', {'user': user, 'request_user': request.user})
 
 
-
 def member_report(request, podio_code):
     user = get_object_or_404(MyUser, podio_code=podio_code)
     office_hours = OfficeHour.objects.filter(member=request.user).order_by('-checkin_time')
     return render(request, "report.html", {'user': user, 'office_hours': office_hours, 'request_user': request.user})
+
 
 def resetar_senha(request):
     user = MyUser.objects.get(podio_code=request.POST["podio_code"])
     user.set_password(MyUser.objects.make_random_password())
     user.save()
     return HttpResponseRedirect("password_reset_confirm.html")
-

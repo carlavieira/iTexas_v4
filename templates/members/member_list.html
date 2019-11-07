@@ -3,6 +3,39 @@
     {% block body_block %}
 
         <h2 class="title">Lista de Membros</h2>
+        <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="Nome"
+                 name="name"
+                 value="{{ request.GET.name }}"
+                 aria-label="name">
+            <input class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="ID"
+                 name="id"
+                 value="{{ request.GET.id }}"
+                 aria-label="id">
+            <input class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="Cargo"
+                 name="post"
+                 value="{{ request.GET.post }}"
+                 aria-label="post">
+            <input class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="Departamento"
+                 name="department"
+                 value="{{ request.GET.department }}"
+                 aria-label="department">
+            <input class="form-control mr-sm-2"
+                 type="search"
+                 placeholder="Lider"
+                 name="leader"
+                 value="{{ request.GET.leader }}"
+                 aria-label="leader">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Filtrar</button>
+        </form>
         <table class="table" >
             <thead class="thead-light">
             <tr>
@@ -15,18 +48,16 @@
             </tr>
             </thead>
                 <tbody>
-            {% for user in users %}
-
-                <tr class="row-member-list" id="{{ user.podio_code }}">
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.podio_code }}</td>
-                        <td>{{ user.get_post_display }} </td>
-                        <td>{{ user.get_department_display  }}</td>
-                        <td>{{ user.leader }}</td>
-                        <td><a href="{% url 'member_view' user.podio_code %}">Visualizar</a></td>
-                </tr>
-
-            {% endfor %}
+                    {% for user in users %}
+                        <tr class="row-member-list" id="{{ user.podio_code }}">
+                                <td>{{ user.first_name }} {{ user.last_name }}</td>
+                                <td>{{ user.podio_code }}</td>
+                                <td>{{ user.get_post_display }} </td>
+                                <td>{{ user.get_department_display  }}</td>
+                                <td>{{ user.leader }}</td>
+                                <td><a href="{% url 'member_view' user.podio_code %}">Visualizar</a></td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
                 </table>
 
