@@ -83,7 +83,6 @@ def member_list(request):
         users = users.filter(podio_code__icontains=id)
     if 'post' in request.GET:
         post = request.GET['post']
-        print(post)
         users = users.filter(post__icontains=post)
     if 'department' in request.GET:
         department = request.GET['department']
