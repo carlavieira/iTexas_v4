@@ -3,7 +3,59 @@
     {% block body_block %}
 
         <h2 class="title">Lista de Membros</h2>
-        <table class="table" >
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control col-lg-2 input-search"
+                   type="search"
+                   placeholder="Nome"
+                   name="name"
+                   value="{{ request.GET.name }}"
+                   aria-label="name">
+            <input class="form-control col-lg-1 input-search"
+                   type="search"
+                   placeholder="ID"
+                   name="id"
+                   value="{{ request.GET.id }}"
+                   aria-label="id">
+            <select class="form-control minimal col-lg-2 input-search"
+                    type="search"
+                    name="post"
+                    value="{{ request.GET.department }}"
+                    aria-label="post">
+                <option value="" disabled selected>Cargo</option>
+                <option value=""></option>
+                <option value="LCP">LCP</option>
+                <option value="LCVP">LCVP</option>
+                <option value="TLB">TLB</option>
+                <option value="Membro">Membro</option>
+            </select>
+            <select class="form-control minimal col-lg-2 input-search"
+                    type="search"
+                    name="department"
+                    placeholder="Area"
+                    value="{{ request.GET.department }}"
+                    aria-label="department">
+                <option value="" disabled selected>Area</option>
+                <option value=""></option>
+                <option value="LCP">LCP</option>
+                <option value="PM">PM</option>
+                <option value="F&L">F&L</option>
+                <option value="B2C">B2C</option>
+                <option value="B2B">B2B</option>
+                <option value="OGE">OGE</option>
+                <option value="OGT">OGT</option>
+                <option value="OGV">OGV</option>
+                <option value="IGE">IGE</option>
+                <option value="IGT">IGT</option>
+            </select>
+            <input class="form-control mr-sm-2 input-search"
+                   type="search"
+                   placeholder="Lider"
+                   name="leader"
+                   value="{{ request.GET.leader }}"
+                   aria-label="leader">
+            <button class="btn btn-outline-success col-lg-1" type="submit">Filtrar</button>
+        </form>
+        <table class="table">
             <thead class="thead-light">
             <tr>
                 <th class="table-column">Nome</th>
@@ -14,21 +66,19 @@
                 <th class="table-column"></th>
             </tr>
             </thead>
-                <tbody>
+            <tbody>
             {% for user in users %}
-
                 <tr class="row-member-list" id="{{ user.podio_code }}">
-                        <td>{{ user.first_name }} {{ user.last_name }}</td>
-                        <td>{{ user.podio_code }}</td>
-                        <td>{{ user.get_post_display }} </td>
-                        <td>{{ user.get_department_display  }}</td>
-                        <td>{{ user.leader }}</td>
-                        <td><a href="{% url 'member_view' user.podio_code %}">Visualizar</a></td>
+                    <td>{{ user.first_name }} {{ user.last_name }}</td>
+                    <td>{{ user.podio_code }}</td>
+                    <td>{{ user.get_post_display }} </td>
+                    <td>{{ user.get_department_display }}</td>
+                    <td>{{ user.leader }}</td>
+                    <td><a href="{% url 'member_view' user.podio_code %}">Visualizar</a></td>
                 </tr>
-
             {% endfor %}
-                </tbody>
-                </table>
+            </tbody>
+        </table>
 
     {% endblock %}
 {% else %}

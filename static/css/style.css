@@ -125,6 +125,15 @@ body {
     align-items: center;
 }
 
+.login-panel .alert {
+    font-size: 14px;
+    padding: 0.20rem 1.25rem;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 5px;
+
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -603,5 +612,24 @@ table {
     color: #0e8dbc;
 }
 
+.input-search {
+    margin-right: 5px;
 
+}
+
+select.minimal {
+    background-image:
+    linear-gradient(45deg, transparent 50%, gray 50%),
+    linear-gradient(135deg, gray 50%, transparent 50%),
+    linear-gradient(to right, #ccc, #ccc);
+  background-position:
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px),
+    calc(100% - 2.5em) 0.5em;
+  background-size:
+    5px 5px,
+    5px 5px,
+    1px 1.5em;
+  background-repeat: no-repeat;
+}
 

@@ -42,16 +42,16 @@ class MyUserManager(BaseUserManager):
 
 
 class MyUser(AbstractBaseUser):
-    POST = (('1,', 'LCP'), ('2', 'LCVP'), ('3', 'TLB'), ('4', 'Membro'))
+    POST = (('lcp', 'LCP'), ('lcvp', 'LCVP'), ('tlb', 'TLB'), ('membro', 'Membro'))
     DEPARTMENT = (
-    ('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'),
-    ('9', 'IGE'), ('10', 'IGT'),)
+        ('lcp', 'LCP'), ('pm', 'PM'), ('f&l', 'F&L'), ('b2c', 'B2C'), ('b2b', 'B2B'),
+        ('oge', 'OGE'), ('ogt', 'OGT'), ('ogv', 'OGV'), ('ige', 'IGE'), ('igt', 'IGT'),)
     email = models.EmailField(verbose_name='E-mail', max_length=255, unique=True)
     podio_code = models.CharField(max_length=10, verbose_name='ID do Podio', unique=True)
     first_name = models.CharField(max_length=20, verbose_name='Nome')
     last_name = models.CharField(max_length=20, verbose_name='Sobrenome')
-    post = models.CharField(max_length=2, choices=POST, blank=True, null=True, verbose_name='Cargo')
-    department = models.CharField(max_length=2, choices=DEPARTMENT, blank=True, null=True, verbose_name='Área')
+    post = models.CharField(max_length=10, choices=POST, blank=True, null=True, verbose_name='Cargo')
+    department = models.CharField(max_length=10, choices=DEPARTMENT, blank=True, null=True, verbose_name='Área')
     leader = models.ForeignKey("MyUser", blank=True, null=True, on_delete=models.SET_NULL, verbose_name='Líder')
     is_working = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True, verbose_name='Está ativo')
