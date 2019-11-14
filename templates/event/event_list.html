@@ -2,11 +2,11 @@
 {% if user.is_authenticated %}
     {% block body_block %}
 
-        <h2 class="title">Histórico de Reuniões</h2>
+        <h2 class="title">Calendário de Reuniões</h2>
         <table class="table">
             <thead class="thead-light">
             <tr>
-                <th class="table-column">Líder</th>
+                <th class="table-column">Responsável</th>
                 <th class="table-column">Tipo</th>
                 <th class="table-column">Dia</th>
                 <th class="table-column">Hora</th>
@@ -15,8 +15,8 @@
             </tr>
             </thead>
                 <tbody>
-            {% for meeting in meetings %}
-                <tr class="row-meetings" id="{{ meeting.id }}" >
+            {% for event in events %}
+                <tr class="row-meetings" id="{{ event.id }}" >
                     <td>{{ meeting.leader.first_name }}</td>
                     <td>{{ meeting.get_type_display }}</td>
                     <td>{{ meeting.date|date:'d/m/Y' }}</td>

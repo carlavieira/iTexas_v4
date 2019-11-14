@@ -43,6 +43,7 @@
                 {% else %}
                     <li><a href="{% url 'check' %}" class="button">Check in</a></li>
                 {% endif %}
+                <li><a href="{% url 'event_list' %}" class="button">Calendário de Eventos</a></li>
                 <li><a href="{% url 'new_meeting' %}" class="button">Registrar Reunião</a></li>
 {#                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li> #}
                 <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>
@@ -82,6 +83,7 @@
                 {% else %}
                     <li><a href="{% url 'check' %}" class="button">Check in</a></li>
                 {% endif %}
+                <li><a href="{% url 'event_list' %}" class="button">Calendário de Eventos</a></li>
                 <li><a href="{% url 'new_meeting' %}" class="button">Registrar Reunião</a></li>
 {#                <li><a href="{% url 'member_edit' user.podio_code %}" class="button">Editar Meu Perfil</a></li> #}
                 <li><a href="{% url 'office_hours_history' %}" class="button">Minhas Office Hours</a></li>

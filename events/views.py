@@ -19,3 +19,7 @@ def new_event(request):
                   {'event_form': event_form,
                    'registered': registered,
                    'request_user': request.user})
+
+def events_list(request):
+    events = Event.objects.all().order_by('-date')
+    return render(request, 'event/event_list.html', {'events': events, 'request_user': request.user})
