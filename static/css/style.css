@@ -633,3 +633,22 @@ select.minimal {
   background-repeat: no-repeat;
 }
 
+a:hover, a {
+    color: black;
+}
+
+a:hover {
+    font-weight: bold;
+    color: #1e62d0;
+
+}
+
+.font-success {
+    color: #1e62d0;
+}
+
+.font-danger {
+    color: red;
+}
+
+

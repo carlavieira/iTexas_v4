@@ -2,6 +2,36 @@
 {% if user.is_authenticated %}
     {% block body_block %}
         <h2 class="member-detail-name">{{ user.first_name  }} {{ user.last_name }}</h2>
+        <h3 class="">Critério de Membresia</h3>
+
+        <table class="table">
+            <thead class="thead-light">
+            <tr>
+                <th class="table-column">Mês</th>
+                <th class="table-column">Reunião</th>
+                <th class="table-column">Office-Hour</th>
+                <th class="table-column">Eventos</th>
+                <th class="table-column">Resultados</th>
+            </tr>
+            </thead>
+                <tbody>
+                <tr class="row-report-table" id="" >
+                    <td>Outubro</td>
+                    <td><a href="{% url 'my_meetings' %}">83%</a></td>
+                    <td><a href="{% url 'office_hours_history' %}">90%</a></td>
+                    <td><a href="{% url 'event_list' %}">95%</a></td>
+                    <td class="font-success"><a>IDEAL</a></td>
+                </tr>
+
+                <tr class="row-report-table" id="" >
+                    <td>Novembro</td>
+                    <td><a class="link-a" href="{% url 'my_meetings' %}">93%</a></td>
+                    <td id="font-danger"><a  class="font-danger" href="{% url 'office_hours_history' %}">60%</a></td>
+                    <td><a href="{% url 'event_list' %}">90%</a></td>
+                    <td class="font-danger"><a>RISCO</a></td>
+                </tr>
+                </tbody>
+                </table>
 
 
     {% endblock %}
