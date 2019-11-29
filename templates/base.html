@@ -29,7 +29,7 @@
             <div class="member-infos">
                 <a class="member-name" href="{% url 'member_edit' user.podio_code %}">{{ request_user.first_name }} {{ request_user.last_name }}</a>
                 <h3 class="member-area">{{ request_user.get_post_display }} de {{ request_user.get_department_display }}</h3>
-            </div>
+            </div
 
             <ul class="function-list">
                 {% if user.is_admin %}

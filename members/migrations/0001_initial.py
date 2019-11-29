@@ -25,8 +25,8 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=20, verbose_name='Sobrenome')),
                 ('is_active', models.BooleanField(default=True)),
                 ('is_admin', models.BooleanField(default=False)),
-                ('post', models.CharField(blank=True, choices=[('1,', 'LCP'), ('2', 'LCVP'), ('3', 'TLB'), ('4', 'Membro')], max_length=1, null=True)),
-                ('department', models.CharField(blank=True, choices=[('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'), ('9', 'IGE'), ('10', 'IGT')], max_length=1, null=True)),
+                ('post', models.CharField(blank=True, choices=[('LCP', 'LCP'), ('LCVP', 'LCVP'), ('TLB', 'TLB'), ('Membro', 'Membro')], max_length=1, null=True)),
+                ('department', models.CharField(blank=True, choices=[('LCP', 'LCP'), ('PM', 'PM'), ('F&L', 'F&L'), ('B2C', 'B2C'), ('B2B', 'B2B'), ('OGE', 'OGE'), ('OGT', 'OGT'), ('OGV', 'OGV'), ('IGE', 'IGE'), ('IGT', 'IGT')], max_length=1, null=True)),
                 ('leader', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to=settings.AUTH_USER_MODEL)),
             ],
             options={

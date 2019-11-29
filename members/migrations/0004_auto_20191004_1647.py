@@ -35,6 +35,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='myuser',
             name='post',
-            field=models.CharField(blank=True, choices=[('1,', 'LCP'), ('2', 'LCVP'), ('3', 'TLB'), ('4', 'Membro')], max_length=2, null=True, verbose_name='Cargo'),
+            field=models.CharField(blank=True, choices=[('LCP', 'LCP'), ('LCVP', 'LCVP'), ('3', 'TLB'), ('4', 'Membro')], max_length=2, null=True, verbose_name='Cargo'),
         ),
     ]

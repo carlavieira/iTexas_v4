@@ -13,11 +13,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='myuser',
             name='department',
-            field=models.CharField(blank=True, choices=[('1', 'LCP'), ('2', 'PM'), ('3', 'F&L'), ('4', 'B2C'), ('5', 'B2B'), ('6', 'OGE'), ('7', 'OGT'), ('8', 'OGV'), ('9', 'IGE'), ('10', 'IGT')], max_length=2, null=True),
+            field=models.CharField(blank=True, choices=[('LCP', 'LCP'), ('PM', 'PM'), ('F&L', 'F&L'), ('B2C', 'B2C'), ('B2B', 'B2B'), ('OGE', 'OGE'), ('OGT', 'OGT'), ('OGV', 'OGV'), ('IGE', 'IGE'), ('IGT', 'IGT')], max_length=2, null=True),
         ),
         migrations.AlterField(
             model_name='myuser',
             name='post',
-            field=models.CharField(blank=True, choices=[('1,', 'LCP'), ('2', 'LCVP'), ('3', 'TLB'), ('4', 'Membro')], max_length=2, null=True),
+            field=models.CharField(blank=True, choices=[('LCP', 'LCP'), ('LCVP', 'LCVP'), ('TLB', 'TLB'), ('Membro', 'Membro')], max_length=2, null=True),
         ),
     ]
