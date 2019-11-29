@@ -2,14 +2,18 @@
 {% if user.is_authenticated %}
     {% block body_block %}
         <div class="container">
-            <div class="jumbotron">
-                <h1>Seja bem vindo ao iTexas !</h1>
+            <div class="welce">
                 {% if user.is_authenticated %}
-                    <h2>Olá {{ user.first_name }}</h2>
+                    <h1>Olá {{ user.first_name }} {{ user.last_name }},</h1>
+                    <h2>Seja bem vindo ao iTexas !</h2>
                 {% else %}
                     <h2>Register or Login if you'd like to</h2>
                 {% endif %}
             </div>
+            <div class="logo-company-content ">
+                <img class="logo-company" src="../static/images/texas_vetor.png">
+            </div>
+
         </div>
     {% endblock %}
 {% else %}
